@@ -18,7 +18,7 @@
 </head>
 <body>
   <h1>👥 User Profiles</h1>
-  <p>数据来源:<code>userProfiles.json</code>,通过 <code>fetch</code> + <code>response.json()</code> 解析。</p>
+  <p>Data source: <code>userProfiles.json</code>, parsed with <code>fetch</code> + <code>response.json()</code>.</p>
   <div id="profiles">Loading profiles…</div>
   <p id="status"></p>
 
@@ -34,7 +34,7 @@
         const container = document.getElementById('profiles');
         let html = '';
 
-        // json 是一个数组,用 forEach 逐个渲染成卡片
+        // json is an array; render each user as a card with forEach
         json.forEach(function (user) {
           const addr = user.address;
           const pref = user.preferences;
@@ -56,7 +56,7 @@
         });
 
         container.innerHTML = html;
-        document.getElementById('status').textContent = '✅ 已成功加载 ' + json.length + ' 个用户';
+        document.getElementById('status').textContent = '✅ Successfully loaded ' + json.length + ' profiles';
       })
       .catch(err => console.error('Fetch error: ' + err.message));
   </script>

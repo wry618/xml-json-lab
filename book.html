@@ -17,31 +17,31 @@
 </head>
 <body>
   <h1>📚 Book Catalogue</h1>
-  <p>数据来源:<code>book.xml</code>,通过 <code>fetch</code> + <code>DOMParser</code> 解析。</p>
+  <p>Data source: <code>book.xml</code>, parsed with <code>fetch</code> + <code>DOMParser</code>.</p>
   <div id="book-list">Loading books…</div>
   <p id="status"></p>
 
   <script>
-    // 第 1 步:用 fetch 把 book.xml 当纯文本取回来
+    // Step 1: fetch book.xml as plain text
     fetch('book.xml')
       .then(function (response) {
         if (!response.ok) {
           throw new Error('Fetch error: ' + response.status);
         }
-        return response.text(); // XML 文件用 .text() 读成字符串
+        return response.text(); // XML files are read as a string via .text()
       })
       .then(function (xmlText) {
-        // 第 2 步:用 DOMParser 把字符串解析成 DOM 树
+        // Step 2: parse the string into a DOM tree with DOMParser
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
 
-        // 若 XML 有语法错误,DOMParser 不会抛异常,而是返回 <parsererror> 节点
+        // If the XML is malformed, DOMParser returns a <parsererror> node instead of throwing
         const parseError = xmlDoc.querySelector('parsererror');
         if (parseError) {
-          throw new Error('XML 格式错误: ' + parseError.textContent);
+          throw new Error('XML parse error: ' + parseError.textContent);
         }
 
-        // 第 3 步:拿到所有 <book>,逐个读取 id / title / author / price
+        // Step 3: get all <book> elements and read id / title / author / price
         const books = xmlDoc.getElementsByTagName('book');
         let rows = '';
         for (let i = 0; i < books.length; i++) {
@@ -59,17 +59,17 @@
             '</tr>';
         }
 
-        // 第 4 步:把拼好的表格写入页面
+        // Step 4: write the assembled table into the page
         document.getElementById('book-list').innerHTML =
           '<table>' +
           '<thead><tr><th>ID</th><th>Title</th><th>Author</th><th>Price</th></tr></thead>' +
           '<tbody>' + rows + '</tbody>' +
           '</table>';
-        document.getElementById('status').textContent = '✅ 已成功加载 ' + books.length + ' 本书';
+        document.getElementById('status').textContent = '✅ Successfully loaded ' + books.length + ' books';
       })
       .catch(function (err) {
         console.error('Fetch error: ' + err.message);
-        document.getElementById('book-list').textContent = '❌ 加载失败:' + err.message;
+        document.getElementById('book-list').textContent = '❌ Failed to load: ' + err.message;
       });
   </script>
 </body>

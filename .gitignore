@@ -10,6 +10,10 @@ wwx-lab3/
 # 本地测试工具,不上传(仅本地用 node server.js 测试)
 server.js
 
+# 本地报告与提交包(不推送到 GitHub Pages)
+lab-report.md
+lab/
+
 # 常见忽略项
 node_modules/
 .DS_Store
