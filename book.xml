@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogue>
+  <book id="b001">
+    <title>The Great Gatsby</title>
+    <author>F. Scott Fitzgerald</author>
+    <price>10.99</price>
+  </book>
+  <book id="b002">
+    <title>Pride and Prejudice</title>
+    <author>Jane Austen</author>
+    <price>8.50</price>
+  </book>
+  <book id="b003">
+    <title>1984</title>
+    <author>George Orwell</author>
+    <price>12.75</price>
+  </book>
+  <book id="b004">
+    <title>To Kill a Mockingbird</title>
+    <author>Harper Lee</author>
+    <price>9.99</price>
+  </book>
+</catalogue>

@@ -1,0 +1,74 @@
+[
+  {
+    "firstName": "Emma",
+    "lastName": "Johnson",
+    "email": "emma.johnson@example.com",
+    "dateOfBirth": "1998-05-14",
+    "preferences": {
+      "theme": "dark",
+      "language": "English",
+      "notifications": true,
+      "subscription": true
+    },
+    "address": {
+      "street": "42 Maple Street",
+      "city": "Auckland",
+      "state": "Auckland",
+      "zipCode": "1010"
+    }
+  },
+  {
+    "firstName": "Liam",
+    "lastName": "Chen",
+    "email": "liam.chen@example.com",
+    "dateOfBirth": "2000-11-02",
+    "preferences": {
+      "theme": "light",
+      "language": "中文",
+      "notifications": false,
+      "subscription": false
+    },
+    "address": {
+      "street": "88 Nanjing Road",
+      "city": "Shanghai",
+      "state": "Shanghai",
+      "zipCode": "200000"
+    }
+  },
+  {
+    "firstName": "Sofia",
+    "lastName": "Garcia",
+    "email": "sofia.garcia@example.com",
+    "dateOfBirth": "1995-03-21",
+    "preferences": {
+      "theme": "system",
+      "language": "Español",
+      "notifications": true,
+      "subscription": true
+    },
+    "address": {
+      "street": "15 Gran Vía",
+      "city": "Madrid",
+      "state": "Madrid",
+      "zipCode": "28013"
+    }
+  },
+  {
+    "firstName": "Noah",
+    "lastName": "Patel",
+    "email": "noah.patel@example.com",
+    "dateOfBirth": "1999-08-30",
+    "preferences": {
+      "theme": "dark",
+      "language": "English",
+      "notifications": false,
+      "subscription": true
+    },
+    "address": {
+      "street": "7 Queen Street",
+      "city": "Toronto",
+      "state": "Ontario",
+      "zipCode": "M5H 2N2"
+    }
+  }
+]

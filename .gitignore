@@ -1,0 +1,16 @@
+# 其他课程 / 实验的文件,不纳入本仓库
+Javascript-Lab/
+assignment1/
+assignment1-final/
+wwx-lab3/
+*.zip
+*.pdf
+*.docx
+
+# 本地测试工具,不上传(仅本地用 node server.js 测试)
+server.js
+
+# 常见忽略项
+node_modules/
+.DS_Store
+Thumbs.db

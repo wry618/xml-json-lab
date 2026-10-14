@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Profiles — JSON Lab</title>
+  <style>
+    body { font-family: "Segoe UI", Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 16px; color: #333; }
+    h1 { color: #2c3e50; }
+    code { background: #eef1f4; padding: 1px 5px; border-radius: 4px; }
+    #profiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-top: 20px; }
+    .card { border: 1px solid #ddd; border-radius: 8px; padding: 16px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    .card h2 { margin: 0 0 8px; color: #2c3e50; font-size: 1.1rem; }
+    .card p { margin: 4px 0; font-size: 0.92rem; }
+    .card ul { margin: 4px 0 0; padding-left: 18px; font-size: 0.88rem; }
+    #status { color: #2e7d32; margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>👥 User Profiles</h1>
+  <p>数据来源:<code>userProfiles.json</code>,通过 <code>fetch</code> + <code>response.json()</code> 解析。</p>
+  <div id="profiles">Loading profiles…</div>
+  <p id="status"></p>
+
+  <script>
+    fetch('userProfiles.json')
+      .then(response => {
+        if (!response.ok)
+          throw new Error('Fetch error: ' + response.status)
+        else
+          return response.json();
+      })
+      .then(json => {
+        const container = document.getElementById('profiles');
+        let html = '';
+
+        // json 是一个数组,用 forEach 逐个渲染成卡片
+        json.forEach(function (user) {
+          const addr = user.address;
+          const pref = user.preferences;
+
+          html += '<div class="card">' +
+            '<h2>' + user.firstName + ' ' + user.lastName + '</h2>' +
+            '<p><strong>Email:</strong> ' + user.email + '</p>' +
+            '<p><strong>Date of Birth:</strong> ' + user.dateOfBirth + '</p>' +
+            '<p><strong>Address:</strong> ' + addr.street + ', ' + addr.city + ', ' +
+              addr.state + ' ' + addr.zipCode + '</p>' +
+            '<p><strong>Preferences:</strong></p>' +
+            '<ul>' +
+              '<li>Theme: ' + pref.theme + '</li>' +
+              '<li>Language: ' + pref.language + '</li>' +
+              '<li>Notifications: ' + (pref.notifications ? 'Yes' : 'No') + '</li>' +
+              '<li>Newsletter subscription: ' + (pref.subscription ? 'Yes' : 'No') + '</li>' +
+            '</ul>' +
+            '</div>';
+        });
+
+        container.innerHTML = html;
+        document.getElementById('status').textContent = '✅ 已成功加载 ' + json.length + ' 个用户';
+      })
+      .catch(err => console.error('Fetch error: ' + err.message));
+  </script>
+</body>
+</html>
